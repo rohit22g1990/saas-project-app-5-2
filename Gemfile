@@ -30,6 +30,7 @@ gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
 gem 'bootstrap-datepicker-rails'
 gem 'jquery-rails'
+gem 'aws-sdk'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
