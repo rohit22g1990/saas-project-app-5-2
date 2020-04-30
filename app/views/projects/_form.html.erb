@@ -1,33 +1,42 @@
 <%= form_for [@tenant, @project], :html => { :class => "form-horizontal project" } do |f| %>
-  <% if project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-      <ul>
-      <% project.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @project.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @project.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="control-group">
+    <%= f.label :title %>
+    <div class="controls">
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :details %>
-    <%= form.text_area :details %>
+  <div class="control-group">
+    <%= f.label :details %>
+    <div class="controls">
+      <%= f.text_field :details, :class => 'form-control' %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :expected_completion_date %>
-    <%= form.date_select :expected_completion_date %>
+  <div class="control-group">
+    <%= f.label :expected_completion_date %>
+    <div class="controls">
+      <%= f.text_field :expected_completion_date, :class => 'form-control datepicker' %>
+    </div>
   </div>
-  
+  <br />
   <%= f.hidden_field :tenant_id, value: params[:tenant_id], :class => 'form-control' %>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            root_path, :class => 'btn btn-default' %>
+
 <% end %>
