@@ -47,6 +47,14 @@
         </button>
         <a class="navbar-brand" href="#">SaasProjectApp</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav">
+          <% if current_user %>
+            <li>
+              <%= link_to "<i class='fa fa-users'></i> Add Members".html_safe, new_member_path,
+                            class: 'navbar-link' %>
+            </li>
+          <% end %>
+        </ul>
         <ul class="nav navbar-right col-md-4 padding-top-bottom-1-per">
           <% if current_user %>
             <li class="col-md-8 user-name">
@@ -66,7 +74,7 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container home-page-container">
       <div class="row">
         <div class="col-lg-12">
           <%= bootstrap_flash %>
