@@ -12,7 +12,7 @@
   <dt><strong><%= model_class.human_attribute_name(:expected_completion_date) %>:</strong></dt>
   <dd><%= @project.expected_completion_date %></dd>
   <dt><strong><%= model_class.human_attribute_name(:tenant_id) %>:</strong></dt>
-  <dd><%= @project.tenant_id %></dd>
+  <dd><%= tenant_name @project.tenant_id %></dd>
 </dl>
 <h3>Artifacts</h3>
 <%= render 'artifacts/list', artifacts: @project.artifacts %>
@@ -23,7 +23,7 @@
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_tenant_project_path(project: @project, tenant: @project.tenant_id), 
               :class => 'btn btn-default' %>
-<%= link_to 'Edit Project Users', users_tenant_project_path(tenant_id: @project.tenant_id, id: @project.id),
+<%# <%= link_to 'Edit Project Users', users_tenant_project_path(tenant_id: @project.tenant_id, id: @project.id),
               :class => 'btn btn-default' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               tenant_project_path(@project, @project.tenant_id),
