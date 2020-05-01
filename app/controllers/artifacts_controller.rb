@@ -29,11 +29,9 @@ class ArtifactsController < ApplicationController
 
     respond_to do |format|
       if @artifact.save
-        format.html { redirect_to tenant_project_url(tenant_id: Tenant.current_tenant_id, 
-                                                            id: @artifact.project_id), 
-                                                    notice: 'Artifact was successfully created.' 
-                    }
-        format.json { render :show, status: :created, location: @artifact }
+        byebug
+        format.html { redirect_to tenant_project_path(@artifact.project, tenant_id: Tenant.current_tenant_id), notice: 'Artifact was successfully created.'}
+        # format.json { render :show, status: :created, location: @artifact }
       else
         format.html { render :new }
         format.json { render json: @artifact.errors, status: :unprocessable_entity }

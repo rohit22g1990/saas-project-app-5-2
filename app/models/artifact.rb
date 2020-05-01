@@ -3,7 +3,7 @@ class Artifact < ApplicationRecord
   belongs_to :project
   attr_accessor :upload
   
-  MAX_FILE_SIZE = 10.megabytes
+  MAX_FILESIZE = 10.megabytes
   
   validates_presence_of :name, :upload
   validates_uniqueness_of :name
@@ -16,11 +16,12 @@ class Artifact < ApplicationRecord
   end
 
   def upload_to_s3
-    s3 = Aws::S3::Resource.new
-    tenant_name = Tenant.find(Thread.current[:tenant_id]).name
-    obj = s3.bucket(ENV['S3_BUCKET']).object("#{tenant_name}/#{upload.original_filename}")
-    obj.upload_file(upload.path, acl:'public-read')
-    self.key = obj.public_url
+    # s3 = Aws::S3::Resource.new(region:'ap-south-1', access_key_id: 'AKIAXZGQZWZBXKW7HXFQ', secret_access_key: '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')
+    # tenant_name = Tenant.find(Thread.current[:tenant_id]).name
+    # obj = s3.bucket('rails-saas-project').object("#{tenant_name}/#{upload.original_filename}")
+    # obj.upload_file(upload.path, acl:'public-read')
+    # self.key = obj.public_url
+    self.key = 'www.google.com'
   end
 
 end
