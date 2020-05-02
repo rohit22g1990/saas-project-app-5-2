@@ -29,7 +29,6 @@ class ArtifactsController < ApplicationController
 
     respond_to do |format|
       if @artifact.save
-        byebug
         format.html { redirect_to tenant_project_path(@artifact.project, tenant_id: Tenant.current_tenant_id), notice: 'Artifact was successfully created.'}
         # format.json { render :show, status: :created, location: @artifact }
       else
