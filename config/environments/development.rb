@@ -14,7 +14,7 @@ Rails.application.configure do
     :port => "587",
     :authentication => :plain,
     :user_name => "do-not-reply@example.com",
-    :password => ENV["SMTP_ENTRY"],
+    :password => ENV["SENDGRID_PASSWORD"],
     :enable_starttls_auto => true
   }
   # Settings specified here will take precedence over those in config/application.rb.
