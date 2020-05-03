@@ -25,7 +25,7 @@ class Payment < ApplicationRecord
     }) 
     Stripe::Charge.create customer: customer.id,    
                           amount: 1000,    
-                          description: 'Test Premius',    
+                          description: 'Premium',    
                           currency: 'usd'    
   end
 end
